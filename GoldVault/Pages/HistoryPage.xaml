@@ -3,23 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:tool="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
              x:Class="GoldVault.Pages.HistoryPage"
-             Title="">
+             Title=""
+             BackgroundColor="{x:StaticResource BackGround}">
     <ContentPage.Behaviors>
         <tool:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing"/>
     </ContentPage.Behaviors>
     <ScrollView>
-        <VerticalStackLayout Padding="10" Spacing="10">
+        <VerticalStackLayout Padding="0" Spacing="10">
             <Label Text="Tranzakciók"
                FontSize="24"
                FontAttributes="Bold"
-               HorizontalOptions="Center" />
-            <Grid BackgroundColor="LightGray" Padding="10" RowDefinitions="*,*" ColumnDefinitions="*,*">
+               HorizontalOptions="Center" 
+               TextColor="{x:StaticResource Primary}"/>
+            <Grid BackgroundColor="LightGray" Padding="10" RowDefinitions="*,*" ColumnDefinitions="*,*" Margin="0">
                 <Label Text="Öszzes bevétel:" HorizontalOptions="Center" TextColor="Green" Grid.Row="0" Grid.Column="0"/>
                 <Label Text="Összes kiadás:" HorizontalOptions="Center" TextColor="Red" Grid.Row="1" Grid.Column="0"/>
                 <Label Text="{Binding SumIncome}" HorizontalOptions="Center" TextColor="Green" Grid.Row="0" Grid.Column="1"/>
                 <Label Text="{Binding SumOutcome}" HorizontalOptions="Center" TextColor="Red" Grid.Row="1" Grid.Column="1"/>
             </Grid>
-            <CollectionView ItemsSource="{Binding Transactions}" Margin="0" MinimumHeightRequest="300" BackgroundColor="AliceBlue">
+            <CollectionView ItemsSource="{Binding Transactions}" Margin="10" MinimumHeightRequest="300">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <SwipeView>
@@ -27,11 +29,11 @@
                                 <SwipeItems>
                                     <SwipeItem
                                             IconImageSource="{x:StaticResource alertIcon}"
-                                            BackgroundColor="Salmon"/>
+                                            BackgroundColor="{x:StaticResource Secondary}"/>
                                 </SwipeItems>
                             </SwipeView.LeftItems>
                             <Frame CornerRadius="10" Padding="10" Margin="5"
-                                    BackgroundColor="White" HasShadow="True">
+                                    BackgroundColor="#fff" HasShadow="True">
                                 <VerticalStackLayout>
                                     <HorizontalStackLayout>
                                         <Label Text="{Binding Date}" 

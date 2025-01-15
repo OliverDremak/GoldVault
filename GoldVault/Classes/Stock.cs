@@ -20,6 +20,6 @@ namespace GoldVault.Classes
         [Ignore]
         public string ChangeColor => DailyChange.StartsWith("-") ? "#f44336" : "#4caf50";
         [Ignore]
-        public string FavColor => IsFavorite ? "lightgreen" : "#ffffff";
+        public string FavColor => IsFavorite ? "lightgreen" : "#fff";
     }
 }

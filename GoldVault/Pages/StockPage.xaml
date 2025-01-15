@@ -2,13 +2,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GoldVault.Pages.StockPage"
-             Title="">
+             Title=""
+             BackgroundColor="{x:StaticResource BackGround}">
     <ScrollView>
         <VerticalStackLayout Padding="10" Spacing="10">
             <Label Text="Részvényfigyelő"
                FontSize="24"
                FontAttributes="Bold"
-               HorizontalOptions="Center" />
+               HorizontalOptions="Center"
+               TextColor="{x:StaticResource Primary}"/>
             <CollectionView ItemsSource="{Binding Stocks}" Margin="0">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -57,17 +59,19 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
             <Button Text="Részvény hozzáadása"
-                BackgroundColor="#4caf50"
+                BackgroundColor="{x:StaticResource Secondary}"
                 TextColor="White"
                 CornerRadius="10"
                 Command="{Binding AddStockCommand}" />
-            <StackLayout Padding="15" BackgroundColor="#eeeeee">
-                <Label Text="Proba részvények hozzáadaása(5db)"
+            <Frame CornerRadius="10">
+                <StackLayout Padding="0">
+                    <Label Text="Proba részvények hozzáadaása(5db)"
                       FontSize="18"
                       FontAttributes="Italic"
-                      HorizontalOptions="Center" />
-                <Button Text="Add 5 stocks" Command="{Binding AddExamplesCommand}"/>
-            </StackLayout>
+                      HorizontalOptions="CenterAndExpand" />
+                    <Button Text="Add 5 stocks" Command="{Binding AddExamplesCommand}"/>
+                </StackLayout>
+            </Frame>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:tool="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
              x:Class="GoldVault.Pages.MainPage"
-             Title="Digitális Pénztárca">
+             Title="Digitális Pénztárca"
+             BackgroundColor="{x:StaticResource BackGround}">
     <ContentPage.Behaviors>
         <tool:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing"/>
     </ContentPage.Behaviors>
@@ -18,7 +19,7 @@
                     <Label Text="{Binding TotalBalance}"
                            FontSize="24"
                            FontAttributes="Bold"
-                           TextColor="#2d89ef"
+                           TextColor="{x:StaticResource Primary}"
                            HorizontalOptions="Center" />
                 </VerticalStackLayout>
             </Frame>
@@ -39,36 +40,38 @@
 
             <Button Text="Tranzakciók"
                     Command="{Binding NavigateToTransactionsCommand}"
-                    BackgroundColor="#ff9800"
+                    BackgroundColor="{x:StaticResource Primary}"
                     TextColor="White"
                     CornerRadius="10"
                     HorizontalOptions="FillAndExpand" />
-            <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,Auto" Padding="20" ColumnSpacing="10" RowSpacing="15">
-                <Label Text="Amount:" FontAttributes="Bold" Grid.Row="0" VerticalOptions="Center" />
-                <Entry Text="{Binding TransactionAmount, Mode=TwoWay}" 
-                       Keyboard="Numeric" 
-                       Placeholder="Enter amount" 
-                       Grid.Column="1"
-                       x:Name="MoneyEntry"/>
-                <Label Text="Note:" FontAttributes="Bold" Grid.Row="1" VerticalOptions="Center"/>
-                <Entry Text="{Binding TransactionNote, Mode=TwoWay}" 
-                       Placeholder="Enter a note (optional)" 
-                       Grid.Column="1" Grid.Row="1"  x:Name="NoteEntry"/>
-                <Button Text="Send Money" 
-                        Command="{Binding SendMoneyCommand}" 
-                        Clicked="OnSendMoneyClicked"
-                        Grid.Row="3" 
-                        BackgroundColor="Red" 
-                        TextColor="White" 
-                        Grid.Column="0" />
-                <Button Text="Receive Money" 
-                        Command="{Binding ReceiveMoneyCommand}"                      
-                        Clicked="OnReceiveMoneyClicked"
-                        Grid.Row="3" 
-                        BackgroundColor="Green" 
-                        TextColor="White" 
-                        Grid.Column="1" />
-            </Grid>
+            <Frame>
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,Auto" Padding="10" ColumnSpacing="10" RowSpacing="15">
+                    <Label Text="Amount:" FontAttributes="Bold" Grid.Row="0" VerticalOptions="Center" />
+                    <Entry Text="{Binding TransactionAmount, Mode=TwoWay}" 
+           Keyboard="Numeric" 
+           Placeholder="Enter amount" 
+           Grid.Column="1"
+           x:Name="MoneyEntry"/>
+                    <Label Text="Note:" FontAttributes="Bold" Grid.Row="1" VerticalOptions="Center"/>
+                    <Entry Text="{Binding TransactionNote, Mode=TwoWay}" 
+           Placeholder="Enter a note (optional)" 
+           Grid.Column="1" Grid.Row="1"  x:Name="NoteEntry"/>
+                    <Button Text="Send Money" 
+            Command="{Binding SendMoneyCommand}" 
+            Clicked="OnSendMoneyClicked"
+            Grid.Row="3" 
+            BackgroundColor="Red" 
+            TextColor="White" 
+            Grid.Column="0" />
+                    <Button Text="Receive Money" 
+            Command="{Binding ReceiveMoneyCommand}"                      
+            Clicked="OnReceiveMoneyClicked"
+            Grid.Row="3" 
+            BackgroundColor="Green" 
+            TextColor="White" 
+            Grid.Column="1" />
+                </Grid>
+            </Frame>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
